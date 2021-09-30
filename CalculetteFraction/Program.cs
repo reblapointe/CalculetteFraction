@@ -51,7 +51,6 @@ namespace CalculetteFraction
                 denominateur *= -1;
             }
         }
-        
 
         /// <summary>
         /// Calcule la réduction de la fraction reçue et place la réponse dans numerateurSortie et 
@@ -63,7 +62,7 @@ namespace CalculetteFraction
         /// <param name="denominateur">dénominateur de la fraction</param>
         /// <param name="numerateurSortie">numérateur de la fraction réduite</param>
         /// <param name="denominateurSortie">dénominateur de la fraction réduite</param>
-        static void ReduireFraction(int numerateur, int denominateur, 
+        static void ReduireFraction(int numerateur, int denominateur,
             out int numerateurSortie, out int denominateurSortie)
         {
             numerateurSortie = numerateur;
@@ -107,7 +106,7 @@ namespace CalculetteFraction
         /// <param name="denominateur">Le dénominateur de la fraction équivalente</param>
         /// <param name="denominateurMax">La valeur maximum du dénominateur</param>
         /// <param name="precision">La précision demandée</param>
-        static void Farey(double x, out int numerateur, out int denominateur, 
+        static void Farey(double x, out int numerateur, out int denominateur,
             int denominateurMax = 1_000_000_000, double precision = PRECISION)
         {
             int signe = 1;
@@ -126,7 +125,7 @@ namespace CalculetteFraction
             }
 
             int a = 0, b = 1, c = 1, d = 1;
-            
+
             while (b <= denominateurMax && d <= denominateurMax)
             {
                 double mediant = (double)(a + c) / (b + d);
@@ -183,7 +182,7 @@ namespace CalculetteFraction
             Console.WriteLine("Entrez un nombre à virgule");
             if (double.TryParse(Console.ReadLine(), out double n))
             {
-                Farey(n, numerateur: out int a, denominateur: out int b);
+                Farey(n, numerateur: out int a, denominateur: out int b, denominateurMax:int.MaxValue);
                 Console.WriteLine($"{n} = {FractionVersString(a, b)}");
             }
             else
@@ -284,8 +283,10 @@ namespace CalculetteFraction
             if (LireDeuxFractions(out int n1, out int d1, out int n2, out int d2))
             {
                 AdditionnerFractions(n1, d1, n2, d2, out int n, out int d);
-                Console.WriteLine($"{FractionVersString(n1, d1)} + " +
-                    $"{FractionVersString(n2, d2)} = {FractionVersString(n, d)}");
+                Console.WriteLine(
+                    $"{FractionVersString(denominateur: d1, numerateur: n1)} + " +
+                    $"{FractionVersString(numerateur: n2, denominateur: d2)} = " +
+                    $"{FractionVersString(numerateur: n, denominateur: d)}");
             }
         }
 
@@ -314,8 +315,10 @@ namespace CalculetteFraction
             if (LireDeuxFractions(out int n1, out int d1, out int n2, out int d2))
             {
                 MultiplierFractions(n1, d1, n2, d2, out int n, out int d);
-                Console.WriteLine($"{FractionVersString(n1, d1)} * " +
-                    $"{FractionVersString(n2, d2)} = {FractionVersString(n, d)}");
+                Console.WriteLine(
+                    $"{FractionVersString(denominateur: d1, numerateur: n1)} * " +
+                    $"{FractionVersString(numerateur: n2, denominateur: d2)} = " +
+                    $"{FractionVersString(numerateur: n, denominateur: d)}");
             }
         }
 
