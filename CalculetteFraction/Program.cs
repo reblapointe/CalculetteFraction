@@ -53,24 +53,6 @@ namespace CalculetteFraction
         }
 
         /// <summary>
-        /// Calcule la réduction de la fraction reçue et place la réponse dans numerateurSortie et 
-        /// denominateurSortie
-        /// </summary>
-        /// <example> (12, 24) --> (1, 2)  </example>
-        /// <example> (75, 100) --> (3, 4) </example>
-        /// <param name="numerateur">numérateur de la fraction</param>
-        /// <param name="denominateur">dénominateur de la fraction</param>
-        /// <param name="numerateurSortie">numérateur de la fraction réduite</param>
-        /// <param name="denominateurSortie">dénominateur de la fraction réduite</param>
-        static void ReduireFraction(int numerateur, int denominateur,
-            out int numerateurSortie, out int denominateurSortie)
-        {
-            numerateurSortie = numerateur;
-            denominateurSortie = denominateur;
-            ReduireFraction(ref numerateurSortie, ref denominateurSortie);
-        }
-
-        /// <summary>
         /// Détermine si deux doubles sont à peu près égaux selon une précision
         /// </summary>
         /// 
